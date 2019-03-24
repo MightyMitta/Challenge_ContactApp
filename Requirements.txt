@@ -1,0 +1,23 @@
+Pages:
+Main:
+	Button		=> Manage
+	List		=> Contacts
+Manage:
+	Button		=> New Contact
+	Button		=> Edit
+	Button		=> Delete
+	Button		=> Back
+	List		=> Contacts
+Edit:
+	Textboxes	=> Labels
+	Textblock	=> User Info
+	Button		=> Back
+	Button		=> Save
+Create:
+	Textboxes	=> Labels
+	Textblock	=> User Info
+	Button		=> Back
+	Button		=> Save/Add
+Windows:
+Details:
+		Textboxes	=> User Info
