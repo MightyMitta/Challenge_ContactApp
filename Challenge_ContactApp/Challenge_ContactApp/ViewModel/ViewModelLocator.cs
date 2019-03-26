@@ -43,7 +43,10 @@ namespace Challenge_ContactApp.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MenuViewModel>();
             SimpleIoc.Default.Register<NewContactViewModel>();
+            SimpleIoc.Default.Register<ManageContactViewModel>();
+            SimpleIoc.Default.Register<RemoveContactViewModel>();
         }
 
         public MainViewModel Main
@@ -62,11 +65,27 @@ namespace Challenge_ContactApp.ViewModel
             }
         }
 
+        public ManageContactViewModel ManageContact
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ManageContactViewModel>();
+            }
+        }
+
         public NewContactViewModel NewContact
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<NewContactViewModel>();
+            }
+        }
+
+        public RemoveContactViewModel RemoveContact 
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<RemoveContactViewModel>();
             }
         }
 

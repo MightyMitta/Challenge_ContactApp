@@ -25,5 +25,6 @@ namespace Challenge_ContactApp.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<contact> contacts { get; set; }
     }
 }

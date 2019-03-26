@@ -25,6 +25,9 @@
                     <Setter Property="Height" Value="35"/>
                 </Style.Setters>
             </Style>
+            <Style TargetType="TabItem">
+                <Setter Property="Background" Value="#FF424997"/>
+            </Style>
         </ResourceDictionary>
   </Application.Resources>
 </Application>
