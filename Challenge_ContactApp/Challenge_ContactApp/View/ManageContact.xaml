@@ -3,11 +3,31 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:db="clr-namespace:Challenge_ContactApp.Model"
       xmlns:local="clr-namespace:Challenge_ContactApp.View"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1024"
       Title="ManageContact" DataContext="{Binding Source={StaticResource Locator}, Path=ManageContact}">
-
+    <Page.Resources>
+        <DataTemplate x:Key="contactList" DataType="{x:Type db:contact}">
+            <Grid Background="#FF52A5F7" Margin="15,5,15,0">
+                <TextBlock HorizontalAlignment="Left" Padding="20,20,0,20" Foreground="White" FontSize="20" TextWrapping="NoWrap">
+                    <Run Text="{Binding firstname}"/>
+                    <Run Text="{Binding middlename}"/>
+                    <Run Text="{Binding lastname}"/>
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Background="Orange" Cursor="Hand" Command="{Binding Path=Tag.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding Path=.}" BorderBrush="Transparent" Width="45" Height="35" Padding="0" HorizontalAlignment="Right" Margin="0,0,10,0">
+                        <fa:FontAwesome Icon="Wrench" FontSize="30" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button>
+                    <Button Background="Red" Cursor="Hand" Command="{Binding Path=Tag.RemoveCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding Path=.}" BorderBrush="Transparent" Width="45" Height="35" Padding="0" HorizontalAlignment="Right" Margin="0,0,20,0">
+                        <fa:FontAwesome Icon="Trash" FontSize="30" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -19,13 +39,14 @@
             <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Manage Contacts" FontSize="40" HorizontalAlignment="Center" Grid.Column="1"/>
-        <StackPanel Grid.Row="2">
-            <Button Content="Add" Width="100" Height="50" Margin="5" Command="{Binding CreateCommand}"/>
-            <Button Content="Edit" Width="100" Height="50" Margin="5" Command="{Binding EditCommand}"/>
-            <Button Content="Remove" Width="100" Height="50" Margin="5" Command="{Binding RemoveCommand}"/>
+        <StackPanel Grid.Row="1">
+            <Button Content="New Contact" Cursor="Hand" Width="100" Height="70" Margin="5" Command="{Binding CreateCommand}"/>
         </StackPanel>
-        <StackPanel Grid.Column="3">
-            <Button Content="Back" Width="100" Height="50" Margin="5" Background="#FF991F1F" Command="{Binding BackCommand}"/>
+        <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,0,0,20">
+            <ItemsControl Tag="{Binding}" ItemsSource="{Binding Contacts}" ItemTemplate="{StaticResource contactList}"/>
+        </ScrollViewer>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <Button Content="Back" Cursor="Hand" Width="100" Height="70" Margin="5" Background="#FF991F1F" Command="{Binding BackCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

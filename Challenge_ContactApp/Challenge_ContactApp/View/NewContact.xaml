@@ -5,23 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Challenge_ContactApp.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1024"
       Title="NewContact" DataContext="{Binding Source={StaticResource Locator}, Path=NewContact}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Add New Student" FontSize="40" HorizontalAlignment="Center" Grid.Column="1"/>
-        <TabControl Grid.Column="1" Grid.Row="1" Background="#FF424997">
-            <TabItem Header="Personal Info" Background="#FF424997" >
-                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+        <TextBlock Text="New Contact" FontSize="40" HorizontalAlignment="Center" Grid.Column="1"/>
+        <TabControl Grid.Column="1" Grid.Row="1" Background="#FF424997" VerticalAlignment="Top" BorderThickness="1" Height="290">
+            <TabItem Header="Personal Info" Background="#FF424997">
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="30">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="First Name:" Width="100"/>
                         <TextBox Text="{Binding Contact.firstname, UpdateSourceTrigger=PropertyChanged}"/>
@@ -38,17 +39,40 @@
                         <TextBlock Text="E-mail:" Width="100"/>
                         <TextBox Text="{Binding Contact.email, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
-                    <Button Content="Add" Command="{Binding AddUserCommand}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Phonenumber:" Width="100"/>
+                        <TextBox Text="{Binding Contact.phonenumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Social">
-            </TabItem>
             <TabItem Header="Home">
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="Street:" Width="100"/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding Contact.address.street, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="House Number:" Width="100"/>
+                        <TextBox Width="30" Text="{Binding Contact.address.housenumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="100" Margin="0,3,0,0" Text="Postal Code:"/>
+                        <TextBox Width="50" Text="{Binding Contact.address.postalcode, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="City:" Width="100"/>
+                        <TextBox Text="{Binding Contact.address.city, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="Country:" Width="100"/>
+                        <TextBox Text="{Binding Contact.address.country, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="Work"/>
         </TabControl>
-        <StackPanel Grid.Column="3">
-            <Button Content="Back" Width="100" Height="50" Margin="5" Background="#FF991F1F" Command="{Binding BackCommand}"/>
+        <Button Cursor="Hand" Content="Add" Command="{Binding AddUserCommand}" Grid.Column="1" Grid.Row="2" Width="100" Height="70"/>
+        <StackPanel Grid.Column="3" Grid.Row="1">
+            <Button Content="Back" Width="100" Cursor="Hand" Height="70" Margin="5" Background="#FF991F1F" Command="{Binding BackCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

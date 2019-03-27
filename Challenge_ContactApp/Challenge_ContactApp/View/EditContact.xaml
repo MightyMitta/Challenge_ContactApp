@@ -1,0 +1,78 @@
+﻿<Page x:Class="Challenge_ContactApp.View.EditContact"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Challenge_ContactApp.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="EditContact" DataContext="{Binding Source={StaticResource Locator}, Path=EditContact}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="110"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding SelectedContact}" FontSize="40" HorizontalAlignment="Center" Grid.Column="1"/>
+        <TabControl Grid.Column="1" Grid.Row="1" Background="{x:Null}" VerticalAlignment="Top" BorderThickness="1" Height="290">
+            <TabItem Header="Personal Info" Background="#FF111761">
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="First Name:" Width="100"/>
+                        <TextBox Text="{Binding Contact.firstname, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black" Background="#FF111761" SelectionBrush="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Middle Name:" Width="100"/>
+                        <TextBox Text="{Binding Contact.middlename, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black" Background="#FF111761" SelectionBrush="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Last Name:" Width="100"/>
+                        <TextBox Text="{Binding Contact.lastname, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black" Background="#FF111761" SelectionBrush="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="E-mail:" Width="100"/>
+                        <TextBox Text="{Binding Contact.email, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black" Background="#FF111761" SelectionBrush="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Phonenumber:" Width="100"/>
+                        <TextBox Text="{Binding Contact.phonenumber, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Black" Background="#FF111761" SelectionBrush="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Home" Background="#FF111761">
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="Street:" Width="100"/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding Contact.address.street, UpdateSourceTrigger=PropertyChanged}" Background="#FF111761" SelectionBrush="White" BorderBrush="Black"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="House Number:" Width="100"/>
+                        <TextBox Width="30" Text="{Binding Contact.address.housenumber, UpdateSourceTrigger=PropertyChanged}" Background="#FF111761" SelectionBrush="White" BorderBrush="Black"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="100" Margin="0,3,0,0" Text="Postal Code:"/>
+                        <TextBox Width="50" Text="{Binding Contact.address.postalcode, UpdateSourceTrigger=PropertyChanged}" Background="#FF111761" SelectionBrush="White" BorderBrush="Black"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="City:" Width="100"/>
+                        <TextBox Text="{Binding Contact.address.city, UpdateSourceTrigger=PropertyChanged}" Background="#FF111761" SelectionBrush="White" BorderBrush="Black"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,3,0,0" Text="Country:" Width="100"/>
+                        <TextBox Text="{Binding Contact.address.country, UpdateSourceTrigger=PropertyChanged}" Background="#FF111761" SelectionBrush="White" BorderBrush="Black"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <Button Content="Edit" Cursor="Hand" Command="{Binding AddUserCommand}" Grid.Column="1" Grid.Row="2"/>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <Button Content="Back" Width="100" Height="50" Margin="5" Background="#FF991F1F" Command="{Binding BackCommand}" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Page>

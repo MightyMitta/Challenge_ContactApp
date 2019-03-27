@@ -16,20 +16,21 @@ namespace Challenge_ContactApp.ViewModel
     public class ManageContactViewModel : ViewModelBase
     {
         public RelayCommand CreateCommand { get; set; }
-        public RelayCommand EditCommand { get; set; }
+        public RelayCommand<contact> EditCommand { get; set; }
         public RelayCommand BackCommand { get; set; }
-        public RelayCommand RemoveCommand { get; set; }
+        public RelayCommand<contact> RemoveCommand { get; set; }
         public ObservableCollection<contact> Contacts { get; set; }
-        public contactEntities Db { get; set; }
+        public contactDbEntities Db { get; set; }
 
         public ManageContactViewModel()
         {
             CreateCommand = new RelayCommand(Create);
-            EditCommand = new RelayCommand(Edit);
+            EditCommand = new RelayCommand<contact>(Edit);
             BackCommand = new RelayCommand(Back);
-            RemoveCommand = new RelayCommand(Remove);
-            Db = new contactEntities();
+            RemoveCommand = new RelayCommand<contact>(Remove);
+            Db = new contactDbEntities();
             Contacts = new ObservableCollection<contact>(Db.contacts.ToList());
+            MessengerInstance.Register<UpdateMessage>(this, Message => UpdateList());
         }
 
         public void Create()
@@ -37,19 +38,37 @@ namespace Challenge_ContactApp.ViewModel
             MessengerInstance.Send(new PageMessage(new NewContact()));
         }
 
-        public void Edit()
+        public void Edit(contact contact)
         {
-            MessageBox.Show("This does not do anything yet");
+            MessengerInstance.Send(new ContactMessage(contact));
+            MessengerInstance.Send(new PageMessage(new EditContact()));
         }
 
-        public void Remove()
+        public void Remove(contact contact)
         {
-            MessageBox.Show("This does not do anything yet");
+            try
+            {
+                MessageBox.Show($"{contact.firstname} has been removed.", "Remove Succesful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                Db.addresses.Remove(contact.address);
+                Db.contacts.Remove(contact);
+                Db.SaveChanges();
+                MessengerInstance.Send(new UpdateMessage());
+            }
+            catch
+            {
+                MessageBox.Show($"Could not remove {contact.firstname}!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void Back()
         {
             MessengerInstance.Send(new HistoryMessage());
+        }
+
+        public void UpdateList()
+        {
+            Contacts = new ObservableCollection<contact>(Db.contacts.ToList());
+            RaisePropertyChanged("Contacts");
         }
     }
 }

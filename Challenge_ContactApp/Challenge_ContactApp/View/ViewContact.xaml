@@ -1,0 +1,76 @@
+﻿<Window x:Class="Challenge_ContactApp.View.ViewContact"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Challenge_ContactApp.View"
+        mc:Ignorable="d"
+        Title="ViewContact" Height="350" Width="450" DataContext="{Binding Source={StaticResource Locator}, Path=ViewContact}" Background="#FF2F378F">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="125"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="125"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="BorderBrush" Value="#FF2E3EA6"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TabControl Background="{x:Null}" VerticalAlignment="Top" BorderThickness="1" Height="319">
+            <TabItem Header="Personal Info" Background="#FF424997" Foreground="White">
+                <StackPanel HorizontalAlignment="Left" Margin="30">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="First Name:"/>
+                        <TextBox Text="{Binding Contact.firstname, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Middle Name:"/>
+                        <TextBox Text="{Binding Contact.middlename, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Last Name:"/>
+                        <TextBox Text="{Binding Contact.lastname, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="E-mail:"/>
+                        <TextBox Text="{Binding Contact.email, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Phonenumber:"/>
+                        <TextBox IsEnabled="False" Text="{Binding Contact.phonenumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Home">
+                <StackPanel HorizontalAlignment="Left" Margin="30">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Street:"/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding Contact.address.street, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="House Number:"/>
+                        <TextBox Width="40" Text="{Binding Contact.address.housenumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Postal Code:"/>
+                        <TextBox Width="70" Text="{Binding Contact.address.postalcode, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="City:"/>
+                        <TextBox Text="{Binding Contact.address.city, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Country:"/>
+                        <TextBox Text="{Binding Contact.address.country, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

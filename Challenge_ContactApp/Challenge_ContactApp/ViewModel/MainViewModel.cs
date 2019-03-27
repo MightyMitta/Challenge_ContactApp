@@ -12,7 +12,6 @@ namespace Challenge_ContactApp.ViewModel
     {
         private Page _currentPage;
 
-        //Stack is a list where you can add and remove the first item using ExampleStack.Push() or ExampleStack.Pop()
         public Stack<Page> History { get; set; }
         public Page PreviousPage { get; set; }
         public Page CurrentPage { get { return _currentPage; } set { _currentPage = value; } }
@@ -22,7 +21,6 @@ namespace Challenge_ContactApp.ViewModel
         public RelayCommand CloseAppCommand { get; set; }
 
 
-        //The MainViewModel Constructor will run the code in it when the app is started
         public MainViewModel()
         {
             History = new Stack<Page>();
@@ -32,7 +30,6 @@ namespace Challenge_ContactApp.ViewModel
             CloseAppCommand = new RelayCommand(CloseApp);
         }
 
-        //The SwitchPage method will add a page to the History Stack and switches to the selected page
         public void SwitchPage(PageMessage pageMessage)
         {
             if (CurrentPage.GetType() == pageMessage.Page.GetType())
@@ -44,17 +41,15 @@ namespace Challenge_ContactApp.ViewModel
             RaisePropertyChanged("CurrentPage");
         }
 
-        //The PageBack method will remove the first item from the History Stack and go to the previous page
         public void PageBack()
         {
             CurrentPage = History.Pop();
             RaisePropertyChanged("CurrentPage");
         }
 
-        //The CloseApp method will close the App when called
         public void CloseApp()
         {
-            ;
+
         }
     }
 }

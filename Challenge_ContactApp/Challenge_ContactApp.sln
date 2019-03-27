@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge_ContactApp", "Challenge_ContactApp\Challenge_ContactApp.csproj", "{4E68C68B-F3F7-4EDD-B87B-D95577FDBCAC}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ContactDb", "ContactDb\ContactDb.sqlproj", "{640D6715-F2F1-4D54-9643-0ADD30072510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactWeb", "ContactWeb\ContactWeb.csproj", "{D768E43F-464D-4B70-AC3E-F40064FDC51F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,16 @@ Global
 		{4E68C68B-F3F7-4EDD-B87B-D95577FDBCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E68C68B-F3F7-4EDD-B87B-D95577FDBCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E68C68B-F3F7-4EDD-B87B-D95577FDBCAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640D6715-F2F1-4D54-9643-0ADD30072510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640D6715-F2F1-4D54-9643-0ADD30072510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640D6715-F2F1-4D54-9643-0ADD30072510}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{640D6715-F2F1-4D54-9643-0ADD30072510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640D6715-F2F1-4D54-9643-0ADD30072510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640D6715-F2F1-4D54-9643-0ADD30072510}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D768E43F-464D-4B70-AC3E-F40064FDC51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D768E43F-464D-4B70-AC3E-F40064FDC51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D768E43F-464D-4B70-AC3E-F40064FDC51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D768E43F-464D-4B70-AC3E-F40064FDC51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,10 +13,10 @@ namespace Challenge_ContactApp.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class contactEntities : DbContext
+    public partial class contactDbEntities : DbContext
     {
-        public contactEntities()
-            : base("name=contactEntities")
+        public contactDbEntities()
+            : base("name=contactDbEntities")
         {
         }
     
@@ -25,6 +25,8 @@ namespace Challenge_ContactApp.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
+        public virtual DbSet<address> addresses { get; set; }
         public virtual DbSet<contact> contacts { get; set; }
     }
 }

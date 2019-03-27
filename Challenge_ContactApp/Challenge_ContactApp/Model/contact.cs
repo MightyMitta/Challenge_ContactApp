@@ -15,11 +15,13 @@ namespace Challenge_ContactApp.Model
     public partial class contact
     {
         public int contact_id { get; set; }
+        public int address_id { get; set; }
         public string firstname { get; set; }
         public string middlename { get; set; }
         public string lastname { get; set; }
-        public Nullable<int> phonenumber { get; set; }
-        public string address { get; set; }
+        public string phonenumber { get; set; }
         public string email { get; set; }
+    
+        public virtual address address { get; set; }
     }
 }

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Challenge_ContactApp.View
 {
     /// <summary>
-    /// Interaction logic for RemoveContact.xaml
+    /// Interaction logic for EditContact.xaml
     /// </summary>
-    public partial class RemoveContact : Page
+    public partial class EditContact : Page
     {
-        public RemoveContact()
+        public EditContact()
         {
             InitializeComponent();
         }
