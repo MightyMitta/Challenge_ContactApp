@@ -7,20 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Background="#FF2F378F" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Menu Grid.Column="0" Grid.ColumnSpan="3" Background="#FF111761" Foreground="White">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Close" Background="#FF111761" Command="{Binding CloseApp}"/>
-            </MenuItem>
-            <MenuItem Header="Contact">
-                <MenuItem Header="_New" Background="#FF111761"/>
-                <MenuItem Header="_Edit" Background="#FF111761"/>
-                <MenuItem Header="_Remove" Background="#FF111761"/>
-            </MenuItem>
-        </Menu>
+
         <Frame NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}" Grid.Row="2"/>
     </Grid>
 </Window>
