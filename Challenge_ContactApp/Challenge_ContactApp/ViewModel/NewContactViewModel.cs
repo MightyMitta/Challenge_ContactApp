@@ -20,31 +20,34 @@ namespace Challenge_ContactApp.ViewModel
         public RelayCommand BackCommand { get; set; }
         public contactDbEntities Db { get; set; }
 
-        public NewContactViewModel()
+        public NewContactViewModel(contactDbEntities db)
         {
             Contact = new contact();
             Contact.address = new address();
             AddUserCommand = new RelayCommand(AddUser);
             BackCommand = new RelayCommand(Back);
-            Db = new contactDbEntities();
+            Db = db;
         }
 
+        //Zodra deze Methode aangeroepen wordt doormiddel van de AddUserCommand zal deze proberen een nieuw contact toe te voegen aan de DataBase
+        //Als dit niet lukt zal er een MessageBox in het scherm komen van de gebruiker
         public void AddUser()
         {
-            //try
-            //{
-            Db.contacts.Add(Contact);
-            Db.SaveChanges();
-            MessageBox.Show($"Contact {Contact.firstname} has been added!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
-            MessengerInstance.Send(new UpdateMessage());
-            MessengerInstance.Send(new HistoryMessage());
-            Contact = new contact();
-            Contact.address = new address();
-            //}
-            //catch
-            //{
-            MessageBox.Show("Could not add Contact!", "Failed to add Contact", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            //}
+            try
+            {
+                Db.contacts.Add(Contact);
+                Db.SaveChanges();
+                MessageBox.Show($"Contact {Contact.firstname} has been added!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessengerInstance.Send(new UpdateMessage());
+                MessengerInstance.Send(new HistoryMessage());
+                Contact = new contact();
+                Contact.address = new address();
+            }
+            catch
+            {
+                MessageBox.Show("Could not add Contact!", "Failed to add Contact", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                MessengerInstance.Send(new HistoryMessage());
+            }
         }
 
         public void Back()

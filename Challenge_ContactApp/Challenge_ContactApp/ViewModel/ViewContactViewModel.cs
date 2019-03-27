@@ -11,8 +11,10 @@ namespace Challenge_ContactApp.ViewModel
 {
     public class ViewContactViewModel : ViewModelBase
     {
+        //De properties voor de ViewContactViewModel Class
         public contact Contact { get; set; }
 
+        //De Constructor voor de ViewContactViewModel Class.
         public ViewContactViewModel()
         {
             MessengerInstance.Register<ContactMessage>(this, message => UpdateContact(message.Contact));

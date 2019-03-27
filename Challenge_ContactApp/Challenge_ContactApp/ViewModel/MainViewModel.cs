@@ -13,13 +13,7 @@ namespace Challenge_ContactApp.ViewModel
         private Page _currentPage;
 
         public Stack<Page> History { get; set; }
-        public Page PreviousPage { get; set; }
         public Page CurrentPage { get { return _currentPage; } set { _currentPage = value; } }
-        public RelayCommand NewCommand { get; set; }
-        public RelayCommand EditCommand { get; set; }
-        public RelayCommand RemoveCommand { get; set; }
-        public RelayCommand CloseAppCommand { get; set; }
-
 
         public MainViewModel()
         {
@@ -27,9 +21,9 @@ namespace Challenge_ContactApp.ViewModel
             CurrentPage = new View.Menu();
             MessengerInstance.Register<PageMessage>(this, Message => SwitchPage(Message));
             MessengerInstance.Register<HistoryMessage>(this, Message => PageBack());
-            CloseAppCommand = new RelayCommand(CloseApp);
         }
 
+        //Deze Methode laat en nieuwe Page zien zodra CurrentPage veranderd
         public void SwitchPage(PageMessage pageMessage)
         {
             if (CurrentPage.GetType() == pageMessage.Page.GetType())
@@ -45,11 +39,6 @@ namespace Challenge_ContactApp.ViewModel
         {
             CurrentPage = History.Pop();
             RaisePropertyChanged("CurrentPage");
-        }
-
-        public void CloseApp()
-        {
-
         }
     }
 }

@@ -16,7 +16,6 @@
                     <Run Text="{Binding firstname}"/>
                     <Run Text="{Binding middlename}"/>
                     <Run Text="{Binding lastname}"/>
-                    <Run Text="{Binding phonenumber}"/>
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Background="Green" Command="{Binding Path=Tag.ViewCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding Path=.}" Cursor="Hand" BorderBrush="Transparent" Width="45" Height="35" Padding="0" HorizontalAlignment="Right" Margin="0,0,10,0">

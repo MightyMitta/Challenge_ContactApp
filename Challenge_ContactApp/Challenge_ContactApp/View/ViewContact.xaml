@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Challenge_ContactApp.View"
         mc:Ignorable="d"
-        Title="ViewContact" Height="350" Width="450" DataContext="{Binding Source={StaticResource Locator}, Path=ViewContact}" Background="#FF2F378F">
+        Title="ViewContact" Height="350" Width="450" DataContext="{Binding Source={StaticResource Locator}, Path=ViewContact}" Background="#FF2F378F" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
@@ -14,16 +14,19 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Width" Value="125"/>
+            <Setter Property="Width" Value="200"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="IsEnabled" Value="False"/>
-            <Setter Property="BorderBrush" Value="#FF2E3EA6"/>
+            <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="SelectionBrush" Value="White"/>
+            <Setter Property="Background" Value="#FF111761"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>
     <Grid>
         <TabControl Background="{x:Null}" VerticalAlignment="Top" BorderThickness="1" Height="319">
-            <TabItem Header="Personal Info" Background="#FF424997" Foreground="White">
+            <TabItem Header="Personal Info" Background="#FF111761" Foreground="White">
                 <StackPanel HorizontalAlignment="Left" Margin="30">
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="First Name:"/>
@@ -47,7 +50,7 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Home">
+            <TabItem Header="Home" Background="#FF111761">
                 <StackPanel HorizontalAlignment="Left" Margin="30">
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="Street:"/>

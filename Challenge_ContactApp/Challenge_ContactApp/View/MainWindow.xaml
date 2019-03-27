@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Challenge_ContactApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Background="#FF2F378F" ResizeMode="NoResize">
+        Title="MainWindow" Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Background="#FF2F378F" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>

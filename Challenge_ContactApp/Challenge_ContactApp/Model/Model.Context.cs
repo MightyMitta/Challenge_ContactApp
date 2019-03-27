@@ -25,7 +25,6 @@ namespace Challenge_ContactApp.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<address> addresses { get; set; }
         public virtual DbSet<contact> contacts { get; set; }
     }

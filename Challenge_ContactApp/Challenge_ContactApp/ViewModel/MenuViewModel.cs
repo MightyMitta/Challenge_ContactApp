@@ -14,17 +14,18 @@ namespace Challenge_ContactApp.ViewModel
 {
     public class MenuViewModel : ViewModelBase
     {
+        //De Properties voor de ViewContactViewModel Class
         public RelayCommand<contact> ViewCommand { get; set; }
         public RelayCommand ManageCommand { get; set; }
         public ObservableCollection<contact> Contacts { get; set; }
         public contactDbEntities Db { get; set; }
 
-
-        public MenuViewModel()
+        //De Constructor voor de ViewContactViewModel Class
+        public MenuViewModel(contactDbEntities db)
         {
             ViewCommand = new RelayCommand<contact>(View);
             ManageCommand = new RelayCommand(Manage);
-            Db = new contactDbEntities();
+            Db = db;
             Contacts = new ObservableCollection<contact>(Db.contacts.ToList());
             MessengerInstance.Register<UpdateMessage>(this, Message => UpdateList());
         }
@@ -37,6 +38,7 @@ namespace Challenge_ContactApp.ViewModel
         public void View(contact contact)
         {
             MessengerInstance.Send<ContactMessage>(new ContactMessage(contact));
+            //De volgende line opent een nieuw window met de gegevens van het geselecteerde Contact
             new ViewContact().Show();
         }
 

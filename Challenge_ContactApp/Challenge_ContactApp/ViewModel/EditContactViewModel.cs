@@ -8,6 +8,7 @@ using Challenge_ContactApp.Model;
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using Challenge_ContactApp.Messenger;
+using System.Data.Entity;
 
 namespace Challenge_ContactApp.ViewModel
 {
@@ -15,34 +16,31 @@ namespace Challenge_ContactApp.ViewModel
     {
         private contact _contact;
 
+        //De properties voor de EditContactViewModel Class
         public contact Contact { get { return _contact; } set { _contact = value; } }
-        public RelayCommand AddUserCommand { get; set; }
+        public RelayCommand EditUserCommand { get; set; }
         public RelayCommand BackCommand { get; set; }
         public contactDbEntities Db { get; set; }
         public string SelectedContact { get { return "Edit " + Contact.firstname; } }
 
-
-        public EditContactViewModel()
+        //De Constructor voor de EditConactViewModel Class.
+        public EditContactViewModel(contactDbEntities db)
         {
             MessengerInstance.Register<ContactMessage>(this, message => UpdateContact(message.Contact));
-            AddUserCommand = new RelayCommand(AddUser);
+            EditUserCommand = new RelayCommand(Edit);
             BackCommand = new RelayCommand(Back);
-            Db = new contactDbEntities();
+            Db = db;
         }
 
-        public void AddUser()
+        public void Edit()
         {
             try
             {
-                var res = Db.contacts.SingleOrDefault(contact => contact.contact_id == Contact.contact_id);
-
-                if (res != null)
-                {
-                    res = Contact;
-                    Db.SaveChanges();
-                    MessageBox.Show($"{Contact.firstname} has been edited.", "Edit Succesful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    MessengerInstance.Send(new HistoryMessage());
-                }
+                Db.contacts.Attach(Contact);
+                Db.Entry(Contact).State = EntityState.Modified;
+                Db.SaveChanges();
+                MessageBox.Show($"{Contact.firstname} has been edited.", "Edit Succesful", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                MessengerInstance.Send(new HistoryMessage());
             }
             catch
             {
@@ -53,6 +51,8 @@ namespace Challenge_ContactApp.ViewModel
 
         public void Back()
         {
+            Db.Entry(Contact).Reload();
+            MessengerInstance.Send(new UpdateMessage());
             MessengerInstance.Send(new HistoryMessage());
         }
 

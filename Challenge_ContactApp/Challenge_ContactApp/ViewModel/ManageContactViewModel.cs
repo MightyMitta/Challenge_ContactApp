@@ -22,13 +22,13 @@ namespace Challenge_ContactApp.ViewModel
         public ObservableCollection<contact> Contacts { get; set; }
         public contactDbEntities Db { get; set; }
 
-        public ManageContactViewModel()
+        public ManageContactViewModel(contactDbEntities db)
         {
             CreateCommand = new RelayCommand(Create);
             EditCommand = new RelayCommand<contact>(Edit);
             BackCommand = new RelayCommand(Back);
             RemoveCommand = new RelayCommand<contact>(Remove);
-            Db = new contactDbEntities();
+            Db = db;
             Contacts = new ObservableCollection<contact>(Db.contacts.ToList());
             MessengerInstance.Register<UpdateMessage>(this, Message => UpdateList());
         }
