@@ -29,8 +29,6 @@ namespace Challenge_ContactApp.ViewModel
             Db = db;
         }
 
-        //Zodra deze Methode aangeroepen wordt doormiddel van de AddUserCommand zal deze proberen een nieuw contact toe te voegen aan de DataBase
-        //Als dit niet lukt zal er een MessageBox in het scherm komen van de gebruiker
         public void AddUser()
         {
             try

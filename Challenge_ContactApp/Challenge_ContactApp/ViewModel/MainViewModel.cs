@@ -23,7 +23,6 @@ namespace Challenge_ContactApp.ViewModel
             MessengerInstance.Register<HistoryMessage>(this, Message => PageBack());
         }
 
-        //Deze Methode laat en nieuwe Page zien zodra CurrentPage veranderd
         public void SwitchPage(PageMessage pageMessage)
         {
             if (CurrentPage.GetType() == pageMessage.Page.GetType())

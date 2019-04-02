@@ -16,6 +16,5 @@ namespace Challenge_ContactApp.Messenger
         {
             Page = page;
         }
-
     }
 }

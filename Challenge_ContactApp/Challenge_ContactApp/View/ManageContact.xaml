@@ -21,7 +21,7 @@
                     <Button Background="Orange" Cursor="Hand" Command="{Binding Path=Tag.EditCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding Path=.}" BorderBrush="Transparent" Width="45" Height="35" Padding="0" HorizontalAlignment="Right" Margin="0,0,10,0">
                         <fa:FontAwesome Icon="Wrench" FontSize="30" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Button>
-                    <Button Background="Red" Cursor="Hand" Command="{Binding Path=Tag.RemoveCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding Path=.}" BorderBrush="Transparent" Width="45" Height="35" Padding="0" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Button Background="Red" Cursor="Hand" Command="{Binding Path=Tag.RemoveCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding Path=.}" BorderBrush="Transparent" Width="45" Height="35" Padding="0" HorizontalAlignment="Right" Margin="0,0,10,0">
                         <fa:FontAwesome Icon="Trash" FontSize="30" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Button>
                 </StackPanel>
